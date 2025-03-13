@@ -1,0 +1,6 @@
+@ConquerBackend_HostAddress = http://localhost:5047
+
+GET {{ConquerBackend_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

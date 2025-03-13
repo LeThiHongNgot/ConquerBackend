@@ -1,0 +1,40 @@
+# Thư mục build và output
+bin/
+obj/
+out/
+
+# Tệp cấu hình cá nhân
+*.user
+*.suo
+*.vs/
+.vscode/
+*.swp
+
+# Các tệp log và backup
+*.log
+*.bak
+*.old
+
+# Thư viện cài đặt từ NuGet
+packages/
+project.lock.json
+project.assets.json
+
+# Thông tin môi trường
+.env
+appsettings.json
+appsettings.Development.json
+
+# Rider và Visual Studio Code settings
+.idea/
+.vscode/
+*.code-workspace
+
+# Các thư mục tạm thời
+tmp/
+temp/
+logs/
+
+# Các file hệ thống của macOS / Windows
+.DS_Store
+Thumbs.db
