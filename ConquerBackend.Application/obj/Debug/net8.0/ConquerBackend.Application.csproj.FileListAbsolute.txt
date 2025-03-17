@@ -1,0 +1,16 @@
+D:\ProjectFPT\ConquerBackend\ConquerBackend.Application\bin\Debug\net8.0\ConquerBackend.Application.deps.json
+D:\ProjectFPT\ConquerBackend\ConquerBackend.Application\bin\Debug\net8.0\ConquerBackend.Application.dll
+D:\ProjectFPT\ConquerBackend\ConquerBackend.Application\bin\Debug\net8.0\ConquerBackend.Application.pdb
+D:\ProjectFPT\ConquerBackend\ConquerBackend.Application\bin\Debug\net8.0\ConquerBackend.Domain.dll
+D:\ProjectFPT\ConquerBackend\ConquerBackend.Application\bin\Debug\net8.0\ConquerBackend.Domain.pdb
+D:\ProjectFPT\ConquerBackend\ConquerBackend.Application\obj\Debug\net8.0\ConquerBackend.Application.csproj.AssemblyReference.cache
+D:\ProjectFPT\ConquerBackend\ConquerBackend.Application\obj\Debug\net8.0\ConquerBackend.Application.GeneratedMSBuildEditorConfig.editorconfig
+D:\ProjectFPT\ConquerBackend\ConquerBackend.Application\obj\Debug\net8.0\ConquerBackend.Application.AssemblyInfoInputs.cache
+D:\ProjectFPT\ConquerBackend\ConquerBackend.Application\obj\Debug\net8.0\ConquerBackend.Application.AssemblyInfo.cs
+D:\ProjectFPT\ConquerBackend\ConquerBackend.Application\obj\Debug\net8.0\ConquerBackend.Application.csproj.CoreCompileInputs.cache
+D:\ProjectFPT\ConquerBackend\ConquerBackend.Application\obj\Debug\net8.0\ConquerBackend.Application.sourcelink.json
+D:\ProjectFPT\ConquerBackend\ConquerBackend.Application\obj\Debug\net8.0\ConquerB.14965406.Up2Date
+D:\ProjectFPT\ConquerBackend\ConquerBackend.Application\obj\Debug\net8.0\ConquerBackend.Application.dll
+D:\ProjectFPT\ConquerBackend\ConquerBackend.Application\obj\Debug\net8.0\refint\ConquerBackend.Application.dll
+D:\ProjectFPT\ConquerBackend\ConquerBackend.Application\obj\Debug\net8.0\ConquerBackend.Application.pdb
+D:\ProjectFPT\ConquerBackend\ConquerBackend.Application\obj\Debug\net8.0\ref\ConquerBackend.Application.dll

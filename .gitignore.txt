@@ -6,7 +6,7 @@ out/
 # Tệp cấu hình cá nhân
 *.user
 *.suo
-*.vs/
+.vs/
 .vscode/
 *.swp
 

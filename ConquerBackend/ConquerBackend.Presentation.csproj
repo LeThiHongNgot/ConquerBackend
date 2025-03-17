@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ConquerBackend.Application\ConquerBackend.Application.csproj" />
+    <ProjectReference Include="..\ConquerBackend.Domain\ConquerBackend.Domain.csproj" />
     <ProjectReference Include="..\ConquerBackend.Infrastructure\ConquerBackend.Infrastructure.csproj" />
     <ProjectReference Include="..\ConquerBackend.Persistence\ConquerBackend.Persistence.csproj" />
   </ItemGroup>
