@@ -2,11 +2,11 @@
 bin/
 obj/
 out/
+.vs/
 
 # Tệp cấu hình cá nhân
 *.user
 *.suo
-.vs/
 .vscode/
 *.swp
 
