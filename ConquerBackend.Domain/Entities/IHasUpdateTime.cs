@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace ConquerBackend.Domain.Entities
 {
-    public class ActionInFunctionModel : AuditInfoModel
+    public interface IHasUpdateTime
     {
-        public int RoleId { get ; set; }
-        public int FunctionId { get; set; }
+       DateTime? ModifiedAt { get; set; }
     }
 }
