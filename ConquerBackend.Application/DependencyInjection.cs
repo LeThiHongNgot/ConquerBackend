@@ -5,7 +5,7 @@ namespace ConquerBackend.Application
 {
     public static class DependencyInjection
     {
-        public static IServiceCollection AddApplicationDI(this IServiceCollection services, IConfiguration iconfiguretion)
+        public static IServiceCollection AddApplicationDI(this IServiceCollection services)
         {
             return services;
         }

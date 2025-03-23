@@ -1,4 +1,6 @@
 ﻿using ConquerBackend.Application;
+using ConquerBackend.Infrastructure;
+using ConquerBackend.Persistence;
 
 namespace ConquerBackend.Presentation
 {
@@ -6,9 +8,9 @@ namespace ConquerBackend.Presentation
     {
         public static IServiceCollection AddAppDI(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddApplicationDI(configuration);
+            services.AddApplicationDI().AddInfrastructureDI().AddPersistenceDI(configuration);
 
-              return services;
+            return services;
         }
     }
 }

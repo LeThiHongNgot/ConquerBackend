@@ -7,9 +7,10 @@ using System.Threading.Tasks;
 
 namespace ConquerBackend.Domain.Entities
 {
-    public interface IHasKey<T>// is Generic Type  giúp tái sử dụng (resusable)
+    public interface IHasKey<TKey>  // is Generic Type  giúp tái sử dụng (resusable)
     {
         [Column("ID")]
-        T Id { get; set; }
+        TKey Id { get; set; }
     }
 }
+    
