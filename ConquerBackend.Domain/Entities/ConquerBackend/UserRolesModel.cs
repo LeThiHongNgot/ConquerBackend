@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConquerBackend.Domain.Entities.ConquerBackend
 {
-    public class UserRolesModel
+    public class UserRolesModel:
     {
 
     }
