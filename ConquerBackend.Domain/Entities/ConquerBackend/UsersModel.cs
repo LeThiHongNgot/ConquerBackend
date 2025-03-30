@@ -16,8 +16,6 @@ namespace ConquerBackend.Domain.Entities.ConquerBackend
         public bool  IsHeadOfDepartment { get; set; }
         public Guid ManagerId { get; set; }
         public Guid PositionId { get; set; }
-
-
     }
 }
     

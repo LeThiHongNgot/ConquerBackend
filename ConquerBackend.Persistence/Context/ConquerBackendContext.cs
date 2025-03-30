@@ -11,6 +11,8 @@ using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using ConquerBackend.Persistence.Configuration;
 
 namespace ConquerBackend.Persistence.Context
 {
@@ -29,11 +31,11 @@ namespace ConquerBackend.Persistence.Context
         public DbSet<ActionsModel> Action { get; set; }
         public DbSet<PermissionsModel> Permissions { get; set; }
         public DbSet<FunctionsModel> Functions { get; set; }
-        //public DbSet<UserClaimsModel> UserClaims { get; set; }
-        //public DbSet<UserTokensModel>  UserTokens { get; set; }
+        public DbSet<UserClaimsModel> UserClaims { get; set; }
+        public DbSet<UserTokensModel> UserTokens { get; set; }
         public DbSet<ActionInFunctionModel> ActionInFunction { get; set; }
-        //public DbSet<UserLoginsModel> UserLogins { get; set; }
-        //public DbSet<UserRolesModel> UserRoles { get; set; }
+        public DbSet<UserLoginsModel> UserLogins { get; set; }
+        public DbSet<UserRolesModel> UserRoles { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer("Data Source=DESKTOP-SPFVRCD;Initial Catalog=CONQUERBACKEND;Integrated Security=True;Trust Server Certificate=True",
@@ -42,23 +44,33 @@ namespace ConquerBackend.Persistence.Context
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            // Đăng ký cấu hình FullAuditedEntityConfiguration cho tất cả các entity kế thừa FullAuditedEntity
+            modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+            // Đăng ký các entity khác (không cần áp dụng filter cho các entity con)
+            modelBuilder.ApplyConfiguration(new FunctionsConfiguration());
+            modelBuilder.ApplyConfiguration(new RolesConfiguration());
+            modelBuilder.ApplyConfiguration(new ActionsConfiguration());
+            modelBuilder.ApplyConfiguration(new PermissionsConfiguration());
+            modelBuilder.ApplyConfiguration(new UsersConfiguration());
+            modelBuilder.ApplyConfiguration(new ActionInFunctionConfiguration());
+            modelBuilder.ApplyConfiguration(new AppUserClaimConfiguration());
+            modelBuilder.ApplyConfiguration(new AppRoleClaimConfiguration());
+            modelBuilder.ApplyConfiguration(new AppUserLoginConfiguration());
+            modelBuilder.ApplyConfiguration(new AppUserRoleConfiguration());
+            modelBuilder.ApplyConfiguration(new AppUserTokenConfiguration());
+
             base.OnModelCreating(modelBuilder);
+
             modelBuilder.HasDefaultSchema(AppConstants.DbSchema);
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
 
-            var softDeleteEntities = typeof(ISoftDelete).Assembly.GetTypes()
-                    .Where(type => typeof(ISoftDelete)
-                                    .IsAssignableFrom(type)
-                                    && type.IsClass
-                                    && !type.IsAbstract);
-
-            foreach (var softDeleteEntity in softDeleteEntities)
-            {
-                modelBuilder.Entity(softDeleteEntity).HasQueryFilter(CreateSoftDeleteFilterExpression(softDeleteEntity));
-            }
+            //modelBuilder.Entity<IdentityUserLogin<Guid>>()
+            //    .HasKey(ul => new { ul.UserId, ul.LoginProvider, ul.ProviderKey });
         }
+
+
         //lọc các đôi tượng bị xóa đi
-       private static LambdaExpression? CreateSoftDeleteFilterExpression(Type type)
+        private static LambdaExpression? CreateSoftDeleteFilterExpression(Type type)
     {
         var parameter = Expression.Parameter(type, "ld");// khởi tạo tham chiếu lamda
         var falseConstantValue = Expression.Constant(false);
