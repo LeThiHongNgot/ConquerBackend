@@ -35,6 +35,7 @@ namespace ConquerBackend.Persistence.Migrations
                         .HasColumnName("CREATEDDATE");
 
                     b.Property<string>("CreatedBy")
+                        .IsRequired()
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)")
                         .HasColumnName("CREATEDBY");
@@ -89,6 +90,7 @@ namespace ConquerBackend.Persistence.Migrations
                         .HasColumnName("CREATEDDATE");
 
                     b.Property<string>("CreatedBy")
+                        .IsRequired()
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)")
                         .HasColumnName("CREATEDBY");
@@ -147,6 +149,7 @@ namespace ConquerBackend.Persistence.Migrations
                         .HasColumnName("CREATEDDATE");
 
                     b.Property<string>("CreatedBy")
+                        .IsRequired()
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)")
                         .HasColumnName("CREATEDBY");

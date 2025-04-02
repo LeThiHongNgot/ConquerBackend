@@ -17,7 +17,7 @@ namespace ConquerBackend.Domain.Entities.ConquerBackend
 
         [Column("CREATEDBY")]
         [MaxLength(200)]
-        public virtual string? CreatedBy { get; set; }
+        public virtual string CreatedBy { get; set; } = string.Empty;
 
         [Column("CREATEDDATE")]
         public virtual DateTime? CreatedAt { get; set; } = DateTime.UtcNow;

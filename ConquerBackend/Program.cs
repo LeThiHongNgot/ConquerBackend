@@ -4,8 +4,6 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddDbContext<DbContext, ConquerBackendContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("CONQUERBACKEND")));
 
 // Add services to the container.
 builder.Services.AddAppDI(builder.Configuration);

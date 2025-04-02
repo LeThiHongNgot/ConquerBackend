@@ -37,7 +37,7 @@ namespace ConquerBackend.Domain.Entities
     {
         [Column("CREATEDBY")]
         [MaxLength(200)]
-        public virtual string? CreatedBy { get; set; }
+        public virtual string CreatedBy { get; set; } =string.Empty;
 
         [Column("CREATEDDATE")]
         public virtual DateTime? CreatedAt { get; set; } = DateTime.UtcNow;
@@ -47,5 +47,5 @@ namespace ConquerBackend.Domain.Entities
         public virtual long OrderId { get; set; }
         public virtual bool IsDeleted { get; set; } = false;
     }
-
+   
 }

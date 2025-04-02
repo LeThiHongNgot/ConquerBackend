@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace ConquerBackend.Persistence.Migrations
 {
     /// <inheritdoc />
-    public partial class conquerBackend : Migration
+    public partial class text : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -24,7 +24,7 @@ namespace ConquerBackend.Persistence.Migrations
                     FUNCTIONID = table.Column<int>(type: "int", nullable: false),
                     UPDATEBY = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: true),
                     UPDATEDDATE = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    CREATEDBY = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: true),
+                    CREATEDBY = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
                     CREATEDDATE = table.Column<DateTime>(type: "datetime2", nullable: true),
                     ORDERID = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
@@ -46,7 +46,7 @@ namespace ConquerBackend.Persistence.Migrations
                     ISACTIVED = table.Column<bool>(type: "bit", nullable: false, defaultValue: true),
                     UPDATEBY = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: true),
                     UPDATEDDATE = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    CREATEDBY = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: true),
+                    CREATEDBY = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
                     CREATEDDATE = table.Column<DateTime>(type: "datetime2", nullable: true),
                     ORDERID = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
@@ -70,7 +70,7 @@ namespace ConquerBackend.Persistence.Migrations
                     ISACTIVED = table.Column<bool>(type: "bit", nullable: false, defaultValue: true),
                     UPDATEBY = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: true),
                     UPDATEDDATE = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    CREATEDBY = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: true),
+                    CREATEDBY = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
                     CREATEDDATE = table.Column<DateTime>(type: "datetime2", nullable: true),
                     ORDERID = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),

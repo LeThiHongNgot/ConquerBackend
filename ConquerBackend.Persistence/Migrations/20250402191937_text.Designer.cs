@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ConquerBackend.Persistence.Migrations
 {
     [DbContext(typeof(ConquerBackendContext))]
-    [Migration("20250330050334_conquerBackend")]
-    partial class conquerBackend
+    [Migration("20250402191937_text")]
+    partial class text
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -38,6 +38,7 @@ namespace ConquerBackend.Persistence.Migrations
                         .HasColumnName("CREATEDDATE");
 
                     b.Property<string>("CreatedBy")
+                        .IsRequired()
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)")
                         .HasColumnName("CREATEDBY");
@@ -92,6 +93,7 @@ namespace ConquerBackend.Persistence.Migrations
                         .HasColumnName("CREATEDDATE");
 
                     b.Property<string>("CreatedBy")
+                        .IsRequired()
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)")
                         .HasColumnName("CREATEDBY");
@@ -150,6 +152,7 @@ namespace ConquerBackend.Persistence.Migrations
                         .HasColumnName("CREATEDDATE");
 
                     b.Property<string>("CreatedBy")
+                        .IsRequired()
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)")
                         .HasColumnName("CREATEDBY");
