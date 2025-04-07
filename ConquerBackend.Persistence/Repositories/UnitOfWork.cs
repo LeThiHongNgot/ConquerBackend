@@ -26,6 +26,7 @@ namespace ConquerBackend.Persistence.Repositories
         {
             await _dbContext.SaveChangesAsync(cancellationToken);
         }
+        
         public async Task CommitTransactionAsync(CancellationToken cancellationToken = default)
         {
             await _dbTransaction.CommitAsync(cancellationToken);
