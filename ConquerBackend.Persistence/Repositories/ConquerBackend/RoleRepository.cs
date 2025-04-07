@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConquerBackend.Persistence.Repositories
+namespace ConquerBackend.Persistence.Repositories.ConquerBackend
 {
-    public class IRepository
+    internal class RoleRepository
     {
     }
 }
