@@ -1,10 +1,4 @@
-﻿using ConquerBackend.Domain.Entities;
-using ConquerBackend.Domain.Entities.ConquerBackend;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using ConquerBackend.Domain.Entities.ConquerBackend;
 
 namespace ConquerBackend.Domain.Respositories.ConquerBackend
 {

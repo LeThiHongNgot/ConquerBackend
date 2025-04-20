@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ConquerBackend.Infrastructure")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5d7a0e4e7cf82eb1e8f4e70031729afac763b594")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7ee564f9652e8f730ec3b74eef8ff2062badf1d6")]
 [assembly: System.Reflection.AssemblyProductAttribute("ConquerBackend.Infrastructure")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ConquerBackend.Infrastructure")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
