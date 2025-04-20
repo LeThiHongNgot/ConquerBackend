@@ -1,7 +1,6 @@
 ﻿namespace ConquerBackend.Domain
 {
-    public class DependencyInjection
+    public interface IScopedDependency
     {
-
     }
 }

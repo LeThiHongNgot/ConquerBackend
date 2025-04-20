@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ConquerBackend.Presentation")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e8dc925017b3acb507293f5c12d3b0ed149d7846")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5d7a0e4e7cf82eb1e8f4e70031729afac763b594")]
 [assembly: System.Reflection.AssemblyProductAttribute("ConquerBackend.Presentation")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ConquerBackend.Presentation")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

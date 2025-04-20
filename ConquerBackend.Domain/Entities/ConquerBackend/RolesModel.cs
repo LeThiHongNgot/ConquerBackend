@@ -26,5 +26,6 @@ namespace ConquerBackend.Domain.Entities.ConquerBackend
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]  // OrderId tự động tăng
         public virtual long OrderId { get; set; }
         public virtual bool IsDeleted { get; set; } = false;
+        public virtual ICollection<PermissionsModel> Permissions { get; set; }
     }
 }

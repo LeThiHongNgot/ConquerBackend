@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ConquerBackend.Domain.Respositories
 {
-    public interface IRepository<TEntity> where TEntity : class, new()
+    public interface IRepository<TEntity,TKey> where TEntity : class, new()
     {
         Task<IEnumerable<TEntity>> GetAsync(CancellationToken cancellationToken = default);
         Task<IEnumerable<TOut>> GetAsync<TOut>(CancellationToken cancellationToken = default);
@@ -27,7 +27,7 @@ namespace ConquerBackend.Domain.Respositories
         Task<int> GetTotalItemsAsync(CancellationToken cancellationToken = default);
         Task<int> GetTotalItemsAsync(Expression<Func<TEntity, bool>> predecate, CancellationToken cancellationToken = default);
 
-        Task InsertAsync(TEntity entity, CancellationToken cancellationToken = default);
+        Task<TKey> InsertAsync(TEntity entity, CancellationToken cancellationToken = default);
         Task DeleteAsync(object id, CancellationToken cancellationToken = default);
 
         void Update(TEntity entity);

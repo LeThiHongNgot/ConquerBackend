@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using ConquerBackend.Domain.Entities;
 using ConquerBackend.Domain.Respositories;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace ConquerBackend.Persistence.Repositories
 {
-    public class Repository<TEntity> : IRepository<TEntity> where TEntity : class, new()
+    public class Repository<TEntity, TKey> : IRepository<TEntity, TKey> where TEntity : class, new()
     {
         protected readonly DbContext context;
         private readonly DbSet<TEntity> _dbSet;
@@ -135,11 +136,12 @@ namespace ConquerBackend.Persistence.Repositories
             return _mapper.Map<TOut>(entity);
         }
 
-        public async Task InsertAsync(TEntity entity, CancellationToken cancellationToken = default)
+        public async Task<TKey> InsertAsync(TEntity entity, CancellationToken cancellationToken = default)
         {
-            await context.Set<TEntity>().AddAsync(entity, cancellationToken);
+            var entry =await context.Set<TEntity>().AddAsync(entity, cancellationToken);
+            return (TKey)entry.Property("Id").CurrentValue;
         }
-
+            
         public void Update(TEntity entity)
         {
             context.Set<TEntity>().Update(entity);

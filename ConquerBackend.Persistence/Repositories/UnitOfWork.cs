@@ -10,27 +10,53 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConquerBackend.Persistence.Repositories
-{
-     public class UnitOfWork : IUnitOfWork
-     {
+    namespace ConquerBackend.Persistence.Repositories
+    {
+    public class UnitOfWork : IUnitOfWork
+    {
         private readonly ConquerBackendContext _dbContext;
-        private readonly IDbContextTransaction _dbTransaction;
+        private IDbContextTransaction _dbTransaction;
 
-        public UnitOfWork(ConquerBackendContext dbContext, IMapper mapper, IDbContextTransaction dbTransaction)
+        public UnitOfWork(ConquerBackendContext dbContext)
         {
-            _dbContext = dbContext; 
-            _dbTransaction = dbTransaction;
+            _dbContext = dbContext;
         }
+
+        public async Task BeginTransactionAsync(CancellationToken cancellationToken = default)
+        {
+            _dbTransaction = await _dbContext.Database.BeginTransactionAsync(cancellationToken);
+        }
+
         public async Task SaveChangesAsync(CancellationToken cancellationToken = default)
         {
             await _dbContext.SaveChangesAsync(cancellationToken);
         }
-        
+
         public async Task CommitTransactionAsync(CancellationToken cancellationToken = default)
         {
-            await _dbTransaction.CommitAsync(cancellationToken);
+            if (_dbTransaction != null)
+            {
+                await _dbTransaction.CommitAsync(cancellationToken);
+                await _dbTransaction.DisposeAsync();
+                _dbTransaction = null;
+            }
         }
 
+        public async Task RollbackTransactionAsync(CancellationToken cancellationToken = default)
+        {
+            if (_dbTransaction != null)
+            {
+                await _dbTransaction.RollbackAsync(cancellationToken);
+                await _dbTransaction.DisposeAsync();
+                _dbTransaction = null;
+            }
+        }
+
+        public void Dispose()
+        {
+            _dbTransaction?.Dispose();
+            _dbContext?.Dispose();
+        }
     }
+
 }

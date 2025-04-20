@@ -19,4 +19,8 @@
     <ProjectReference Include="..\ConquerBackend.Domain\ConquerBackend.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Features\" />
+  </ItemGroup>
+
 </Project>

@@ -3,19 +3,23 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35208.52
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConquerBackend.Presentation", "ConquerBackend\ConquerBackend.Presentation.csproj", "{9725AC5E-6A4D-41EB-B184-C590E4E050AE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConquerBackend.Presentation", "ConquerBackend\ConquerBackend.Presentation.csproj", "{9725AC5E-6A4D-41EB-B184-C590E4E050AE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConquerBackend.Application", "ConquerBackend.Application\ConquerBackend.Application.csproj", "{3CFFAF8D-7C9F-4042-864B-03337ABB5A33}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConquerBackend.Application", "ConquerBackend.Application\ConquerBackend.Application.csproj", "{3CFFAF8D-7C9F-4042-864B-03337ABB5A33}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConquerBackend.Domain", "ConquerBackend.Domain\ConquerBackend.Domain.csproj", "{18190C9B-F98F-4490-9AA1-2199FEF8FC97}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConquerBackend.Domain", "ConquerBackend.Domain\ConquerBackend.Domain.csproj", "{18190C9B-F98F-4490-9AA1-2199FEF8FC97}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{65661064-35D4-4CB5-97E9-299741B6CCAE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConquerBackend.Infrastructure", "ConquerBackend.Infrastructure\ConquerBackend.Infrastructure.csproj", "{F3A4EEB5-EC02-45A5-B38D-EB49809731CD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConquerBackend.Infrastructure", "ConquerBackend.Infrastructure\ConquerBackend.Infrastructure.csproj", "{F3A4EEB5-EC02-45A5-B38D-EB49809731CD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConquerBackend.Persistence", "ConquerBackend.Persistence\ConquerBackend.Persistence.csproj", "{27C6647F-056D-49F7-BD5B-107352D742C9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConquerBackend.Persistence", "ConquerBackend.Persistence\ConquerBackend.Persistence.csproj", "{27C6647F-056D-49F7-BD5B-107352D742C9}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{1CAFFE20-34CD-472E-AFBB-3E3181C49340}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{2816C55B-C46D-428E-829B-BDFE586803E2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConquerBackend.Shared", "ConquerBackend.Shared\ConquerBackend.Shared.csproj", "{27082CF9-F192-4425-9FCB-4F7B06A09F3E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -43,6 +47,10 @@ Global
 		{27C6647F-056D-49F7-BD5B-107352D742C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{27C6647F-056D-49F7-BD5B-107352D742C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{27C6647F-056D-49F7-BD5B-107352D742C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{27082CF9-F192-4425-9FCB-4F7B06A09F3E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{27082CF9-F192-4425-9FCB-4F7B06A09F3E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{27082CF9-F192-4425-9FCB-4F7B06A09F3E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{27082CF9-F192-4425-9FCB-4F7B06A09F3E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -52,6 +60,7 @@ Global
 		{18190C9B-F98F-4490-9AA1-2199FEF8FC97} = {1CAFFE20-34CD-472E-AFBB-3E3181C49340}
 		{F3A4EEB5-EC02-45A5-B38D-EB49809731CD} = {65661064-35D4-4CB5-97E9-299741B6CCAE}
 		{27C6647F-056D-49F7-BD5B-107352D742C9} = {65661064-35D4-4CB5-97E9-299741B6CCAE}
+		{27082CF9-F192-4425-9FCB-4F7B06A09F3E} = {2816C55B-C46D-428E-829B-BDFE586803E2}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {70EE84A5-4A95-40FE-A504-9B0A72686962}
