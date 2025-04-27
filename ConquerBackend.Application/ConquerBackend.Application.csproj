@@ -17,10 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ConquerBackend.Domain\ConquerBackend.Domain.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Features\" />
+    <ProjectReference Include="..\ConquerBackend.Shared\ConquerBackend.Shared.csproj" />
   </ItemGroup>
 
 </Project>

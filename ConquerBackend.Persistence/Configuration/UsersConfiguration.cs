@@ -38,7 +38,7 @@ public class UsersConfiguration : IEntityTypeConfiguration<UsersModel>
 
         // Cấu hình IsHeadOfDepartment
         builder.Property(u => u.IsHeadOfDepartment)
-            .HasColumnName("ISHEADOFDOCUMENT")
+            .HasColumnName("ISHEADOFDEPARTMENT")
             .IsRequired();
 
         // Cấu hình ManagerId (ForeignKey)

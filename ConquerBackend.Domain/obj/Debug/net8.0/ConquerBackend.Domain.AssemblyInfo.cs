@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ConquerBackend.Domain")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7ee564f9652e8f730ec3b74eef8ff2062badf1d6")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+dbdd2b0d1c880351d1d6502e77895363e0c624d4")]
 [assembly: System.Reflection.AssemblyProductAttribute("ConquerBackend.Domain")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ConquerBackend.Domain")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

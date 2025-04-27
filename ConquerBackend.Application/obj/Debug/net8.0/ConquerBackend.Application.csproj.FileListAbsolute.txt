@@ -14,3 +14,5 @@ D:\ProjectFPT\ConquerBackend\ConquerBackend.Application\obj\Debug\net8.0\Conquer
 D:\ProjectFPT\ConquerBackend\ConquerBackend.Application\obj\Debug\net8.0\refint\ConquerBackend.Application.dll
 D:\ProjectFPT\ConquerBackend\ConquerBackend.Application\obj\Debug\net8.0\ConquerBackend.Application.pdb
 D:\ProjectFPT\ConquerBackend\ConquerBackend.Application\obj\Debug\net8.0\ref\ConquerBackend.Application.dll
+D:\ProjectFPT\ConquerBackend\ConquerBackend.Application\bin\Debug\net8.0\ConquerBackend.Shared.dll
+D:\ProjectFPT\ConquerBackend\ConquerBackend.Application\bin\Debug\net8.0\ConquerBackend.Shared.pdb

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ConquerBackend.Domain.Respositories.ConquerBackend
 {
-    public interface IActionRepository : IRepository<ActionsModel, Guid>
+    public interface IActionRepository : IRepository<ActionsModel, Guid>, IScopedDependency
     {
     }
 }

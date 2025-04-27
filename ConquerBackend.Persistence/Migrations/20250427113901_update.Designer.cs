@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ConquerBackend.Persistence.Migrations
 {
     [DbContext(typeof(ConquerBackendContext))]
-    [Migration("20250402191937_text")]
-    partial class text
+    [Migration("20250427113901_update")]
+    partial class update
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -33,6 +33,9 @@ namespace ConquerBackend.Persistence.Migrations
                         .HasColumnType("uniqueidentifier")
                         .HasColumnName("ID");
 
+                    b.Property<Guid?>("ActionsModelId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<DateTime?>("CreatedAt")
                         .HasColumnType("datetime2")
                         .HasColumnName("CREATEDDATE");
@@ -46,6 +49,9 @@ namespace ConquerBackend.Persistence.Migrations
                     b.Property<int>("FunctionId")
                         .HasColumnType("int")
                         .HasColumnName("FUNCTIONID");
+
+                    b.Property<Guid?>("FunctionsModelId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
@@ -71,6 +77,10 @@ namespace ConquerBackend.Persistence.Migrations
                         .HasColumnName("ROLEID");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ActionsModelId");
+
+                    b.HasIndex("FunctionsModelId");
 
                     b.ToTable("ActionInFunction", "CONQUERBACKEND");
                 });
@@ -214,15 +224,30 @@ namespace ConquerBackend.Persistence.Migrations
                         .HasColumnType("uniqueidentifier")
                         .HasColumnName("ACTIONID");
 
+                    b.Property<Guid?>("ActionsModelId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<Guid>("FunctionId")
                         .HasColumnType("uniqueidentifier")
                         .HasColumnName("FUNCTIONID");
+
+                    b.Property<Guid?>("FunctionsModelId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid>("RoleId")
                         .HasColumnType("uniqueidentifier")
                         .HasColumnName("ROLEID");
 
+                    b.Property<Guid?>("RolesModelId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("ActionsModelId");
+
+                    b.HasIndex("FunctionsModelId");
+
+                    b.HasIndex("RolesModelId");
 
                     b.ToTable("Permissions", "CONQUERBACKEND");
                 });
@@ -326,7 +351,7 @@ namespace ConquerBackend.Persistence.Migrations
 
                     b.Property<bool>("IsHeadOfDepartment")
                         .HasColumnType("bit")
-                        .HasColumnName("ISHEADOFDOCUMENT");
+                        .HasColumnName("ISHEADOFDEPARTMENT");
 
                     b.Property<string>("LastName")
                         .IsRequired()
@@ -530,6 +555,51 @@ namespace ConquerBackend.Persistence.Migrations
                     b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUserToken<System.Guid>");
 
                     b.HasDiscriminator().HasValue("UserTokensModel");
+                });
+
+            modelBuilder.Entity("ConquerBackend.Domain.Entities.ConquerBackend.ActionInFunctionModel", b =>
+                {
+                    b.HasOne("ConquerBackend.Domain.Entities.ConquerBackend.ActionsModel", null)
+                        .WithMany("ActionInFunctions")
+                        .HasForeignKey("ActionsModelId");
+
+                    b.HasOne("ConquerBackend.Domain.Entities.ConquerBackend.FunctionsModel", null)
+                        .WithMany("ActionInFunctions")
+                        .HasForeignKey("FunctionsModelId");
+                });
+
+            modelBuilder.Entity("ConquerBackend.Domain.Entities.ConquerBackend.PermissionsModel", b =>
+                {
+                    b.HasOne("ConquerBackend.Domain.Entities.ConquerBackend.ActionsModel", null)
+                        .WithMany("Permissions")
+                        .HasForeignKey("ActionsModelId");
+
+                    b.HasOne("ConquerBackend.Domain.Entities.ConquerBackend.FunctionsModel", null)
+                        .WithMany("Permissions")
+                        .HasForeignKey("FunctionsModelId");
+
+                    b.HasOne("ConquerBackend.Domain.Entities.ConquerBackend.RolesModel", null)
+                        .WithMany("Permissions")
+                        .HasForeignKey("RolesModelId");
+                });
+
+            modelBuilder.Entity("ConquerBackend.Domain.Entities.ConquerBackend.ActionsModel", b =>
+                {
+                    b.Navigation("ActionInFunctions");
+
+                    b.Navigation("Permissions");
+                });
+
+            modelBuilder.Entity("ConquerBackend.Domain.Entities.ConquerBackend.FunctionsModel", b =>
+                {
+                    b.Navigation("ActionInFunctions");
+
+                    b.Navigation("Permissions");
+                });
+
+            modelBuilder.Entity("ConquerBackend.Domain.Entities.ConquerBackend.RolesModel", b =>
+                {
+                    b.Navigation("Permissions");
                 });
 #pragma warning restore 612, 618
         }

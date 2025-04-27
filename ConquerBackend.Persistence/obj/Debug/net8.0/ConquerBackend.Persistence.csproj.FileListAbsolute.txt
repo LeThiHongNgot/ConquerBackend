@@ -18,3 +18,5 @@ D:\ProjectFPT\ConquerBackend\ConquerBackend.Persistence\obj\Debug\net8.0\Conquer
 D:\ProjectFPT\ConquerBackend\ConquerBackend.Persistence\obj\Debug\net8.0\ref\ConquerBackend.Persistence.dll
 D:\ProjectFPT\ConquerBackend\ConquerBackend.Persistence\bin\Debug\net8.0\ConquerBackend.Persistence.runtimeconfig.json
 D:\ProjectFPT\ConquerBackend\ConquerBackend.Persistence\obj\Debug\net8.0\ConquerBackend.Persistence.genruntimeconfig.cache
+D:\ProjectFPT\ConquerBackend\ConquerBackend.Persistence\bin\Debug\net8.0\ConquerBackend.Shared.dll
+D:\ProjectFPT\ConquerBackend\ConquerBackend.Persistence\bin\Debug\net8.0\ConquerBackend.Shared.pdb

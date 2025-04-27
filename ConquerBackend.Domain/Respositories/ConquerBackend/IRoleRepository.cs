@@ -2,7 +2,7 @@
 
 namespace ConquerBackend.Domain.Respositories.ConquerBackend
 {
-    public interface IRoleRepository : IRepository<RolesModel, Guid>
+    public interface IRoleRepository : IRepository<RolesModel, Guid>, IScopedDependency
     {
     }
 }

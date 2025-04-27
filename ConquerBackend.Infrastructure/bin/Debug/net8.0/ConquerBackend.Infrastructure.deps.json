@@ -269,6 +269,7 @@
           "AutoMapper": "14.0.0",
           "AutoMapper.Extensions.Microsoft.DependencyInjection": "12.0.1",
           "ConquerBackend.Domain": "1.0.0",
+          "ConquerBackend.Shared": "1.0.0",
           "FluentValidation": "11.11.0",
           "FluentValidation.AspNetCore": "11.3.0",
           "MediatR": "12.4.1",
@@ -289,6 +290,14 @@
         },
         "runtime": {
           "ConquerBackend.Domain.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "ConquerBackend.Shared/1.0.0": {
+        "runtime": {
+          "ConquerBackend.Shared.dll": {
             "assemblyVersion": "1.0.0",
             "fileVersion": "1.0.0.0"
           }
@@ -483,6 +492,11 @@
       "sha512": ""
     },
     "ConquerBackend.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "ConquerBackend.Shared/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

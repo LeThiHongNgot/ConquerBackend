@@ -1,14 +1,21 @@
 ﻿using ConquerBackend.Application.Common;
 using ConquerBackend.Domain.Entities;
 using ConquerBackend.Domain.Entities.ConquerBackend;
+using ConquerBackend.Domain.Respositories;
+using Medallion.Threading.Oracle;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage;
+using System.Data;
 using System.Linq.Expressions;
 using System.Reflection;
 
+
+
 namespace ConquerBackend.Persistence.Context
 {
-    public class ConquerBackendContext : DbContext
+    public class ConquerBackendContext : DbContext, IUnitOfWork
     {
+        private IDbContextTransaction _dbTransaction;
         public ConquerBackendContext()
         {
         }
@@ -131,6 +138,36 @@ namespace ConquerBackend.Persistence.Context
 
                 modelBuilder.Entity(entityType).HasQueryFilter(filter);
             }
+        }
+
+        public async Task<IDisposable> BeginTransactionAsync(IsolationLevel isolationLevel = IsolationLevel.ReadCommitted, CancellationToken cancellationToken = default)
+        {
+            _dbTransaction = await Database.BeginTransactionAsync(isolationLevel, cancellationToken);
+            return _dbTransaction;
+        }
+
+        public async Task<IDisposable> BeginTransactionAsync(IsolationLevel isolationLevel = IsolationLevel.ReadCommitted, string lockName = null, CancellationToken cancellationToken = default)
+        {
+            _dbTransaction = await Database.BeginTransactionAsync(isolationLevel, cancellationToken);
+
+            var sqlLock = new OracleDistributedLock(lockName, Database.GetDbConnection());
+            var lockScope = await sqlLock.AcquireAsync(cancellationToken: cancellationToken);
+            if (lockScope == null)
+            {
+                throw new Exception($"Could not acquire lock: {lockName}");
+            }
+
+            return _dbTransaction;
+        }
+
+        public async Task CommitTransactionAsync(CancellationToken cancellationToken = default)
+        {
+            await _dbTransaction.CommitAsync(cancellationToken);
+        }
+        public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
+        {
+            var result = await base.SaveChangesAsync(cancellationToken);
+            return result;
         }
     }
 }

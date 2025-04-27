@@ -2,7 +2,7 @@
 
 namespace ConquerBackend.Domain.Respositories.ConquerBackend
 {
-    public interface IPermisstionRepository : IRepository<PermissionsModel,Guid>
+    public interface IPermisstionRepository : IRepository<PermissionsModel,Guid>, IScopedDependency
     {
     }
 }

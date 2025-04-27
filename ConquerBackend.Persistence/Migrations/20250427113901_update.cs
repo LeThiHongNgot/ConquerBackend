@@ -6,34 +6,13 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace ConquerBackend.Persistence.Migrations
 {
     /// <inheritdoc />
-    public partial class text : Migration
+    public partial class update : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.EnsureSchema(
                 name: "CONQUERBACKEND");
-
-            migrationBuilder.CreateTable(
-                name: "ActionInFunction",
-                schema: "CONQUERBACKEND",
-                columns: table => new
-                {
-                    ID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    ROLEID = table.Column<int>(type: "int", nullable: false),
-                    FUNCTIONID = table.Column<int>(type: "int", nullable: false),
-                    UPDATEBY = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: true),
-                    UPDATEDDATE = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    CREATEDBY = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
-                    CREATEDDATE = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    ORDERID = table.Column<long>(type: "bigint", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ActionInFunction", x => x.ID);
-                });
 
             migrationBuilder.CreateTable(
                 name: "Actions",
@@ -79,21 +58,6 @@ namespace ConquerBackend.Persistence.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Functions", x => x.ID);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Permissions",
-                schema: "CONQUERBACKEND",
-                columns: table => new
-                {
-                    ID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    ROLEID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    FUNCTIONID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    ACTIONID = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Permissions", x => x.ID);
                 });
 
             migrationBuilder.CreateTable(
@@ -190,7 +154,7 @@ namespace ConquerBackend.Persistence.Migrations
                     FULLNAME = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
                     DATEOFBIRTH = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ISDIRECTOR = table.Column<bool>(type: "bit", nullable: false),
-                    ISHEADOFDOCUMENT = table.Column<bool>(type: "bit", nullable: false),
+                    ISHEADOFDEPARTMENT = table.Column<bool>(type: "bit", nullable: false),
                     MANAGERID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     POSITIONID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     MODIFIEDBY = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: true),
@@ -221,6 +185,107 @@ namespace ConquerBackend.Persistence.Migrations
                 {
                     table.PrimaryKey("PK_UserTokens", x => x.UserId);
                 });
+
+            migrationBuilder.CreateTable(
+                name: "ActionInFunction",
+                schema: "CONQUERBACKEND",
+                columns: table => new
+                {
+                    ID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    ROLEID = table.Column<int>(type: "int", nullable: false),
+                    FUNCTIONID = table.Column<int>(type: "int", nullable: false),
+                    ActionsModelId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    FunctionsModelId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    UPDATEBY = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: true),
+                    UPDATEDDATE = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    CREATEDBY = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
+                    CREATEDDATE = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    ORDERID = table.Column<long>(type: "bigint", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ActionInFunction", x => x.ID);
+                    table.ForeignKey(
+                        name: "FK_ActionInFunction_Actions_ActionsModelId",
+                        column: x => x.ActionsModelId,
+                        principalSchema: "CONQUERBACKEND",
+                        principalTable: "Actions",
+                        principalColumn: "ID");
+                    table.ForeignKey(
+                        name: "FK_ActionInFunction_Functions_FunctionsModelId",
+                        column: x => x.FunctionsModelId,
+                        principalSchema: "CONQUERBACKEND",
+                        principalTable: "Functions",
+                        principalColumn: "ID");
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Permissions",
+                schema: "CONQUERBACKEND",
+                columns: table => new
+                {
+                    ID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    ROLEID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    FUNCTIONID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    ACTIONID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    ActionsModelId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    FunctionsModelId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    RolesModelId = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Permissions", x => x.ID);
+                    table.ForeignKey(
+                        name: "FK_Permissions_Actions_ActionsModelId",
+                        column: x => x.ActionsModelId,
+                        principalSchema: "CONQUERBACKEND",
+                        principalTable: "Actions",
+                        principalColumn: "ID");
+                    table.ForeignKey(
+                        name: "FK_Permissions_Functions_FunctionsModelId",
+                        column: x => x.FunctionsModelId,
+                        principalSchema: "CONQUERBACKEND",
+                        principalTable: "Functions",
+                        principalColumn: "ID");
+                    table.ForeignKey(
+                        name: "FK_Permissions_Roles_RolesModelId",
+                        column: x => x.RolesModelId,
+                        principalSchema: "CONQUERBACKEND",
+                        principalTable: "Roles",
+                        principalColumn: "Id");
+                });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ActionInFunction_ActionsModelId",
+                schema: "CONQUERBACKEND",
+                table: "ActionInFunction",
+                column: "ActionsModelId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ActionInFunction_FunctionsModelId",
+                schema: "CONQUERBACKEND",
+                table: "ActionInFunction",
+                column: "FunctionsModelId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Permissions_ActionsModelId",
+                schema: "CONQUERBACKEND",
+                table: "Permissions",
+                column: "ActionsModelId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Permissions_FunctionsModelId",
+                schema: "CONQUERBACKEND",
+                table: "Permissions",
+                column: "FunctionsModelId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Permissions_RolesModelId",
+                schema: "CONQUERBACKEND",
+                table: "Permissions",
+                column: "RolesModelId");
         }
 
         /// <inheritdoc />
@@ -231,23 +296,11 @@ namespace ConquerBackend.Persistence.Migrations
                 schema: "CONQUERBACKEND");
 
             migrationBuilder.DropTable(
-                name: "Actions",
-                schema: "CONQUERBACKEND");
-
-            migrationBuilder.DropTable(
-                name: "Functions",
-                schema: "CONQUERBACKEND");
-
-            migrationBuilder.DropTable(
                 name: "Permissions",
                 schema: "CONQUERBACKEND");
 
             migrationBuilder.DropTable(
                 name: "RoleClaims",
-                schema: "CONQUERBACKEND");
-
-            migrationBuilder.DropTable(
-                name: "Roles",
                 schema: "CONQUERBACKEND");
 
             migrationBuilder.DropTable(
@@ -268,6 +321,18 @@ namespace ConquerBackend.Persistence.Migrations
 
             migrationBuilder.DropTable(
                 name: "UserTokens",
+                schema: "CONQUERBACKEND");
+
+            migrationBuilder.DropTable(
+                name: "Actions",
+                schema: "CONQUERBACKEND");
+
+            migrationBuilder.DropTable(
+                name: "Functions",
+                schema: "CONQUERBACKEND");
+
+            migrationBuilder.DropTable(
+                name: "Roles",
                 schema: "CONQUERBACKEND");
         }
     }

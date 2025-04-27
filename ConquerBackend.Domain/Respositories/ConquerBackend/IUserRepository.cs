@@ -2,7 +2,7 @@
 
 namespace ConquerBackend.Domain.Respositories.ConquerBackend
 {
-    public interface IUserRepository : IRepository<UsersModel, Guid>
+    public interface IUserRepository : IRepository<UsersModel, Guid>, IScopedDependency
     {
       
     }

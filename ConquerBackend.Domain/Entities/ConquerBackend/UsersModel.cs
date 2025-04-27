@@ -3,9 +3,9 @@
     public class UsersModel : FullAuditedEntity<Guid>
     {
         public string FirstName { get; set; }
-        public string LastName { get; set; } 
+        public string LastName { get; set; }    
         public string FullName { get; set; }
-        public DateTime DateOfBirth { get; set; }
+        public DateTime? DateOfBirth { get; set; }
         public bool IsDirector { get; set; }
         public bool  IsHeadOfDepartment { get; set; }
         public Guid ManagerId { get; set; }
