@@ -1,6 +1,6 @@
-﻿using ConquerBackend.Domain;
-using ConquerBackend.Shared.DependencyInjection;
+﻿using ConquerBackend.Shared.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection;
+using System.Reflection;
 
 namespace ConquerBackend.Application
 {
@@ -15,6 +15,8 @@ namespace ConquerBackend.Application
                 var interfaceOfScoped = scope.GetInterface($"I{scope.Name}");
                 services.AddScoped(interfaceOfScoped, scope);
             }
+            services.AddMediatR(cfg =>
+                cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
             return services;
         }
 

@@ -1,29 +1,18 @@
-﻿using AutoMapper;
-using ConquerBackend.Application.Features.User.DTOs;
+﻿using ConquerBackend.Application.Features.User.DTOs;
 using ConquerBackend.Application.Features.User.Interface;
 using ConquerBackend.Domain.Entities.ConquerBackend;
 using ConquerBackend.Domain.Paging;
 using ConquerBackend.Domain.Respositories.ConquerBackend;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ConquerBackend.Application.Features.User
 {
-    public class UserService : IUserService 
+    public class UserService(IUserRepository userRepository) : IUserService 
     {
-        private readonly IUserRepository _userRepository;
-        public  UserService(IUserRepository userRepository)
-        {
-            _userRepository = userRepository;
-        }
+       
         public async Task<IEnumerable<UsersDTO>> GetAllAsync(CancellationToken cancellationToken)
         {
-            var users = await _userRepository.GetAsync(cancellationToken);
+            var users = await userRepository.GetAsync(cancellationToken);
             return users.Select(user => new UsersDTO
             {
                 Id = user.Id,
@@ -39,9 +28,9 @@ namespace ConquerBackend.Application.Features.User
             
         }
         public async Task<PagedResult<UsersModel>> GetAsync(
-    UsersDTO search,
-    PageParam param,
-    CancellationToken cancellationToken = default)
+        UsersDTO search,
+        PageParam param,
+        CancellationToken cancellationToken = default)
         {
             Expression<Func<UsersModel, bool>> predicate = e =>
             (string.IsNullOrEmpty(search.FirstName) || e.FirstName.Contains(search.FirstName)) &&
@@ -51,8 +40,8 @@ namespace ConquerBackend.Application.Features.User
             (!search.IsDirector.HasValue || e.IsDirector == search.IsDirector) &&
             (!search.IsHeadOfDepartment.HasValue || e.IsHeadOfDepartment == search.IsHeadOfDepartment);
 
-            var items = await _userRepository.GetAsync(predicate, param.PageNumber, param.PageSize, cancellationToken);
-            var totalItems =await _userRepository.GetTotalItemsAsync(predicate, cancellationToken);
+            var items = await userRepository.GetAsync(predicate, param.PageNumber, param.PageSize, cancellationToken);
+            var totalItems =await userRepository.GetTotalItemsAsync(predicate, cancellationToken);
             var result = new PagedResult<UsersModel>
             {
                 Items = items.ToList(),
@@ -64,10 +53,9 @@ namespace ConquerBackend.Application.Features.User
             return result;
         }
 
-
         public async Task<UsersDTO?> GetByIdAsync(Guid id)
         {
-            var user = await _userRepository.GetSingleAsync(id);
+            var user = await userRepository.GetSingleAsync(id);
             if (user == null) return null;
 
             return new UsersDTO
@@ -101,10 +89,10 @@ namespace ConquerBackend.Application.Features.User
             };
 
             // Insert the entity into the repository
-            await _userRepository.InsertAsync(entity, cancellation);
+            await userRepository.InsertAsync(entity, cancellation);
 
             // Commit the changes (this saves the data in the database)
-            await _userRepository.UnitOfWork.SaveChangesAsync(cancellation);
+            await userRepository.UnitOfWork.SaveChangesAsync(cancellation);
 
             // Create a DTO to return the created user data
             var data = new UsersDTO
@@ -124,10 +112,9 @@ namespace ConquerBackend.Application.Features.User
             return data;
         }
 
-
         public async Task<UsersDTO> UpdateAsync(Guid id, UpdateUser input)
         {
-            var user = await _userRepository.GetSingleAsync(id)
+            var user = await userRepository.GetSingleAsync(id)
                        ?? throw new Exception("User not found");
 
             user.FirstName = input.FirstName;
@@ -139,7 +126,7 @@ namespace ConquerBackend.Application.Features.User
             user.ManagerId = input.ManagerId;
             user.PositionId = input.PositionId;
 
-            _userRepository.Update(user);
+            userRepository.Update(user);
 
             return new UsersDTO
             {
@@ -157,7 +144,7 @@ namespace ConquerBackend.Application.Features.User
 
         public async Task<bool> DeleteAsync(Guid id)
         {
-            await _userRepository.DeleteAsync(id);
+            await userRepository.DeleteAsync(id);
             return true;
         }
     }

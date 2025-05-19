@@ -10,20 +10,23 @@ using System.Linq.Expressions;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using ConquerBackend.Domain.Paging;
 using Microsoft.IdentityModel.Tokens;
+using MediatR;
+using ConquerBackend.Application.Features.User.Queries;
+using ConquerBackend.Application.Common;
+using Microsoft.AspNetCore.Components;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace ConquerBackend.API.Controllers
 {
+    [Microsoft.AspNetCore.Mvc.Route("api/[controller]")]
     [ApiController]
-    [Route("api/[controller]")]
-    public class UserController : ControllerBase
+    public class UserController(IUserService _userService, IGetUserQuery _getUserQuery, IDispatch _dispatch) : ControllerBase
     {
-        private readonly IUserService _userService;
-        private readonly IGetUserQuery _getUserQuery;
-
-        public UserController(IUserService userService, IGetUserQuery getUserQuery)
+        [HttpGet("MediatR")]
+        public async Task<IActionResult> GetUserMediar(CancellationToken cancellationToken)
         {
-            _userService = userService;
-            _getUserQuery = getUserQuery;
+            var users = await _dispatch.DispatchAsync(new GetUserListQuery(), cancellationToken);
+            return Ok(users);
         }
 
         // GET: api/user

@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using ConquerBackend.Application.Common;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace ConquerBackend.Infrastructure
 {
@@ -6,7 +7,7 @@ namespace ConquerBackend.Infrastructure
     {
         public static IServiceCollection AddInfrastructureDI(this IServiceCollection services)
         {
-
+            services.AddTransient<IDispatch, Dispatch>();
             return services;
         }
     }
