@@ -45,19 +45,6 @@ app.UseHangfireDashboard("/test/job-dashboard", new DashboardOptions
         }
     }
 });
-app.Use(async (context, next) => // Middleware 1
-{
-    Console.WriteLine($"Middleware 1 Request Received: {context.Request.Path}");
-    await next(); // Gọi middleware tiếp theo
-    Console.WriteLine($"Middleware 1 Response Sent: {context.Response.StatusCode}");
-});
-
-app.Use(async (context, next) => // Middleware 2
-{
-    Console.WriteLine($"Middleware 2 Request Received: {context.Request.Path}");
-    await next(); // Gọi middleware tiếp theo (nếu có)
-    Console.WriteLine($"Middleware 2 Response Sent: {context.Response.StatusCode}");
-});
 
 
 app.MapControllers();

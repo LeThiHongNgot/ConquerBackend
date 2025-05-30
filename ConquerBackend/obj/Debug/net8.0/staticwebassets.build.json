@@ -1,11 +1,12 @@
 {
   "Version": 1,
-  "Hash": "fJ/QqyGdMwY6AxBX0hQao+f0GafHDd4QUArsjwzg+Kw=",
+  "Hash": "rm6DnI2GY2WZ4pKle/tKRaPrRNeOo4s1kE+RzgsNGE0=",
   "Source": "ConquerBackend.Presentation",
   "BasePath": "_content/ConquerBackend.Presentation",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
   "DiscoveryPatterns": [],
-  "Assets": []
+  "Assets": [],
+  "Endpoints": []
 }

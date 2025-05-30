@@ -35,6 +35,7 @@ namespace ConquerBackend.Infrastructure.Redis.Abtractions
         /// <param name="key">Khóa của dữ liệu cần lấy.</param>
         /// <param name="cancellationToken">Token để hủy tác vụ bất đồng bộ.</param>
         /// <returns>Đối tượng đã được deserialize từ JSON.</returns>
-        //Task<TResult> GetAsync<TResult>(string prefix, string key, CancellationToken cancellationToken = default);
+        Task<TResult> GetAsync<TResult>(string prefix, string key, CancellationToken cancellationToken = default);
+        Task RemoveAsync(string key, string field, CancellationToken cancellationToken = default);
     }
 }

@@ -7,6 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="UserRe\**" />
+    <EmbeddedResource Remove="UserRe\**" />
+    <None Remove="UserRe\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Dapper" Version="2.1.66" />
     <PackageReference Include="Dapper.Oracle" Version="2.0.2" />
     <PackageReference Include="DistributedLock" Version="2.6.0" />
@@ -20,6 +26,7 @@
     </PackageReference>
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="9.0.2" />
     <PackageReference Include="Microsoft.Extensions.Logging" Version="9.0.4" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="Oracle.ManagedDataAccess.Core" Version="23.8.0" />
   </ItemGroup>
 
@@ -29,7 +36,6 @@
 
   <ItemGroup>
     <Folder Include="Migrations\" />
-    <Folder Include="UserRe\" />
   </ItemGroup>
 
 </Project>

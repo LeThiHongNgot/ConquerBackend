@@ -1,27 +1,78 @@
-﻿using ConquerBackend.Application.Features.User.DTOs;
+﻿using System.Data;
+using ConquerBackend.Application.Features.User.DTOs;
 using ConquerBackend.Application.Features.User.Interface;
-using ConquerBackend.Domain.Dapper;
-using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using ConquerBackend.Domain.Constants;
+using ConquerBackend.Domain.Respositories.ConquerBackenQuery;
+using ConquerBackend.Infrastructure.Redis.Abtractions;
+using ConquerBackend.Shared.Convert;
+using Microsoft.Extensions.Caching.Distributed;
 
 namespace ConquerBackend.Application.Features.User.Queries
 {
-    public class GetUserQuery:IGetUserQuery 
+    public class GetUserQuery(
+    IUserQueryRepository userQueryRepository,
+    IRedisService redisService
+     ) :IGetUserQuery 
     {
-        private IDapperRepository _dapperRepository;
-        public GetUserQuery(IDapperRepository dapperRepository) {
-            _dapperRepository = dapperRepository;
-        }
         public async Task<List<UsersDTO>> GetAll(CancellationToken cancellation)
         {
-            var sql = @"Select *
-                    From CONQUERBACKEND.Users
-                    ";
-            return await _dapperRepository.QueryAsync<UsersDTO>(sql, null, CommandType.Text, null, cancellation);
+
+            var rs = await userQueryRepository.GetAll(cancellation);
+
+            var rsFinall = rs.Select(user =>  new UsersDTO
+            {
+                Id = user.Id,
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                FullName = user.FullName,
+                DateOfBirth = user.DateOfBirth,
+                IsDirector = user.IsDirector,
+                IsHeadOfDepartment = user.IsHeadOfDepartment,
+                ManagerId = user.ManagerId,
+                PositionId = user.PositionId
+            });
+            return rsFinall.ToList();
+        }
+        public async Task<List<UsersDTO>> GetAllSaveRedis(CancellationToken cancellation)
+        {
+            try
+            {
+                var data = await redisService.GetAsync<List<UsersDTO>>(RedisConst.Prefix.GetDataUser, RedisConst.GetData, cancellation);
+
+                if (data != null)
+                {
+                    return data; // ✅ Return nếu có cache
+                }
+
+                var rs = await userQueryRepository.GetAll(cancellation);
+
+                var rsFinall = rs.Select(user => new UsersDTO
+                {
+                    Id = user.Id,
+                    FirstName = user.FirstName,
+                    LastName = user.LastName,
+                    FullName = user.FullName,
+                    DateOfBirth = user.DateOfBirth,
+                    IsDirector = user.IsDirector,
+                    IsHeadOfDepartment = user.IsHeadOfDepartment,
+                    ManagerId = user.ManagerId,
+                    PositionId = user.PositionId
+                }).ToList();
+
+                var options = new DistributedCacheEntryOptions
+                {
+                    AbsoluteExpirationRelativeToNow = TimeSpan.FromHours(4),
+                };
+
+                await redisService.SetStringAsync(RedisConst.Prefix.GetDataUser, RedisConst.GetData, rsFinall.ToJsonString(), options, cancellation); // ✅ truyền object, không cần ToJsonString()
+
+                return rsFinall;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error while getting user list: {ex.Message}");
+                throw;
+            }
         }
     }
 }

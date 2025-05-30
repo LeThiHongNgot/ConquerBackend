@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "D:\\ProjectFPT\\ConquerBackend\\ConquerBackend.Domain\\ConquerBackend.Domain.csproj": {}
+    "C:\\Users\\ngotLe\\Documents\\Learn\\ConquerBackend\\ConquerBackend.Domain\\ConquerBackend.Domain.csproj": {}
   },
   "projects": {
-    "D:\\ProjectFPT\\ConquerBackend\\ConquerBackend.Domain\\ConquerBackend.Domain.csproj": {
+    "C:\\Users\\ngotLe\\Documents\\Learn\\ConquerBackend\\ConquerBackend.Domain\\ConquerBackend.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\ProjectFPT\\ConquerBackend\\ConquerBackend.Domain\\ConquerBackend.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\ngotLe\\Documents\\Learn\\ConquerBackend\\ConquerBackend.Domain\\ConquerBackend.Domain.csproj",
         "projectName": "ConquerBackend.Domain",
-        "projectPath": "D:\\ProjectFPT\\ConquerBackend\\ConquerBackend.Domain\\ConquerBackend.Domain.csproj",
-        "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
-        "outputPath": "D:\\ProjectFPT\\ConquerBackend\\ConquerBackend.Domain\\obj\\",
+        "projectPath": "C:\\Users\\ngotLe\\Documents\\Learn\\ConquerBackend\\ConquerBackend.Domain\\ConquerBackend.Domain.csproj",
+        "packagesPath": "C:\\Users\\ngotLe\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ngotLe\\Documents\\Learn\\ConquerBackend\\ConquerBackend.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\ASUS\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\ngotLe\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -44,7 +44,8 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
-        }
+        },
+        "SdkAnalysisLevel": "9.0.100"
       },
       "frameworks": {
         "net8.0": {
@@ -61,6 +62,10 @@
             "Microsoft.Extensions.DependencyInjection": {
               "target": "Package",
               "version": "[8.0.1, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
             }
           },
           "imports": [
@@ -79,7 +84,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.101/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

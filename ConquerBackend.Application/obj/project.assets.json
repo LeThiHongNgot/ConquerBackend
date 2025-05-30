@@ -426,13 +426,27 @@
           "buildTransitive/net6.0/_._": {}
         }
       },
+      "Newtonsoft.Json/13.0.3": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/Newtonsoft.Json.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/Newtonsoft.Json.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "ConquerBackend.Domain/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
           "MediatR": "12.4.1",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "8.0.10",
-          "Microsoft.Extensions.DependencyInjection": "8.0.1"
+          "Microsoft.Extensions.DependencyInjection": "8.0.1",
+          "Newtonsoft.Json": "13.0.3"
         },
         "compile": {
           "bin/placeholder/ConquerBackend.Domain.dll": {}
@@ -444,6 +458,9 @@
       "ConquerBackend.Shared/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "Newtonsoft.Json": "13.0.3"
+        },
         "compile": {
           "bin/placeholder/ConquerBackend.Shared.dll": {}
         },
@@ -1063,6 +1080,36 @@
         "useSharedDesignerContext.txt"
       ]
     },
+    "Newtonsoft.Json/13.0.3": {
+      "sha512": "HrC5BXdl00IP9zeV+0Z848QWPAoCr9P3bDEZguI+gkLcBKAOxix/tLEAAHC+UvDNPv4a2d18lOReHMOagPa+zQ==",
+      "type": "package",
+      "path": "newtonsoft.json/13.0.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.md",
+        "README.md",
+        "lib/net20/Newtonsoft.Json.dll",
+        "lib/net20/Newtonsoft.Json.xml",
+        "lib/net35/Newtonsoft.Json.dll",
+        "lib/net35/Newtonsoft.Json.xml",
+        "lib/net40/Newtonsoft.Json.dll",
+        "lib/net40/Newtonsoft.Json.xml",
+        "lib/net45/Newtonsoft.Json.dll",
+        "lib/net45/Newtonsoft.Json.xml",
+        "lib/net6.0/Newtonsoft.Json.dll",
+        "lib/net6.0/Newtonsoft.Json.xml",
+        "lib/netstandard1.0/Newtonsoft.Json.dll",
+        "lib/netstandard1.0/Newtonsoft.Json.xml",
+        "lib/netstandard1.3/Newtonsoft.Json.dll",
+        "lib/netstandard1.3/Newtonsoft.Json.xml",
+        "lib/netstandard2.0/Newtonsoft.Json.dll",
+        "lib/netstandard2.0/Newtonsoft.Json.xml",
+        "newtonsoft.json.13.0.3.nupkg.sha512",
+        "newtonsoft.json.nuspec",
+        "packageIcon.png"
+      ]
+    },
     "ConquerBackend.Domain/1.0.0": {
       "type": "project",
       "path": "../ConquerBackend.Domain/ConquerBackend.Domain.csproj",
@@ -1083,27 +1130,28 @@
       "FluentValidation >= 11.11.0",
       "FluentValidation.AspNetCore >= 11.3.0",
       "MediatR >= 12.4.1",
-      "Microsoft.Extensions.DependencyInjection >= 8.0.1"
+      "Microsoft.Extensions.DependencyInjection >= 8.0.1",
+      "Newtonsoft.Json >= 13.0.3"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\ASUS\\.nuget\\packages\\": {},
+    "C:\\Users\\ngotLe\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\ProjectFPT\\ConquerBackend\\ConquerBackend.Application\\ConquerBackend.Application.csproj",
+      "projectUniqueName": "C:\\Users\\ngotLe\\Documents\\Learn\\ConquerBackend\\ConquerBackend.Application\\ConquerBackend.Application.csproj",
       "projectName": "ConquerBackend.Application",
-      "projectPath": "D:\\ProjectFPT\\ConquerBackend\\ConquerBackend.Application\\ConquerBackend.Application.csproj",
-      "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
-      "outputPath": "D:\\ProjectFPT\\ConquerBackend\\ConquerBackend.Application\\obj\\",
+      "projectPath": "C:\\Users\\ngotLe\\Documents\\Learn\\ConquerBackend\\ConquerBackend.Application\\ConquerBackend.Application.csproj",
+      "packagesPath": "C:\\Users\\ngotLe\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\ngotLe\\Documents\\Learn\\ConquerBackend\\ConquerBackend.Application\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\ASUS\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\ngotLe\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -1119,11 +1167,11 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "D:\\ProjectFPT\\ConquerBackend\\ConquerBackend.Domain\\ConquerBackend.Domain.csproj": {
-              "projectPath": "D:\\ProjectFPT\\ConquerBackend\\ConquerBackend.Domain\\ConquerBackend.Domain.csproj"
+            "C:\\Users\\ngotLe\\Documents\\Learn\\ConquerBackend\\ConquerBackend.Domain\\ConquerBackend.Domain.csproj": {
+              "projectPath": "C:\\Users\\ngotLe\\Documents\\Learn\\ConquerBackend\\ConquerBackend.Domain\\ConquerBackend.Domain.csproj"
             },
-            "D:\\ProjectFPT\\ConquerBackend\\ConquerBackend.Shared\\ConquerBackend.Shared.csproj": {
-              "projectPath": "D:\\ProjectFPT\\ConquerBackend\\ConquerBackend.Shared\\ConquerBackend.Shared.csproj"
+            "C:\\Users\\ngotLe\\Documents\\Learn\\ConquerBackend\\ConquerBackend.Shared\\ConquerBackend.Shared.csproj": {
+              "projectPath": "C:\\Users\\ngotLe\\Documents\\Learn\\ConquerBackend\\ConquerBackend.Shared\\ConquerBackend.Shared.csproj"
             }
           }
         }
@@ -1137,7 +1185,8 @@
         "enableAudit": "true",
         "auditLevel": "low",
         "auditMode": "direct"
-      }
+      },
+      "SdkAnalysisLevel": "9.0.100"
     },
     "frameworks": {
       "net8.0": {
@@ -1166,6 +1215,10 @@
           "Microsoft.Extensions.DependencyInjection": {
             "target": "Package",
             "version": "[8.0.1, )"
+          },
+          "Newtonsoft.Json": {
+            "target": "Package",
+            "version": "[13.0.3, )"
           }
         },
         "imports": [
@@ -1184,7 +1237,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.101/PortableRuntimeIdentifierGraph.json"
       }
     }
   },

@@ -20,10 +20,10 @@ namespace ConquerBackend.API.Controllers
         }
 
         // GET: api/user
-        [HttpGet]
+        [HttpGet("GetByDapper")]
         public async Task<ActionResult<List<UsersDTO>>> GetAll(CancellationToken cancellationToken)
         {
-            var users = await _getUserQuery.GetAll(cancellationToken);
+            var users = await _getUserQuery.GetAllSaveRedis(cancellationToken);
             return Ok(users);
         }
         [HttpGet("Search")]
