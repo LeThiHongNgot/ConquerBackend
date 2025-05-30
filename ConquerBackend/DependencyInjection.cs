@@ -8,7 +8,7 @@ namespace ConquerBackend.Presentation
     {
         public static IServiceCollection AddAppDI(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddApplicationDI().AddInfrastructureDI().AddPersistenceDI(configuration);
+            services.AddApplicationDI().AddInfrastructureDI(configuration).AddPersistenceDI(configuration);
 
             return services;
         }

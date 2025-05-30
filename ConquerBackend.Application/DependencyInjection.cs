@@ -1,4 +1,5 @@
-﻿using ConquerBackend.Shared.DependencyInjection;
+﻿using ConquerBackend.Domain;
+using ConquerBackend.Shared.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 

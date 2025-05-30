@@ -1,10 +1,9 @@
-using ConquerBackend.Persistence.Context;
-using ConquerBackend.Presentation;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
+﻿using ConquerBackend.Presentation;
+using ConquerBackend.Presentation.Middleware;
+using Hangfire;
+using HangfireBasicAuthenticationFilter;
 
 var builder = WebApplication.CreateBuilder(args);
-
 // Add services to the container.
 builder.Services.AddAppDI(builder.Configuration);
 builder.Services.AddControllers();
@@ -32,7 +31,34 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+app.UseMiddleware<ExceptionHandlingMiddleware>();
+
 app.UseCors("MyCors");
+app.UseHangfireDashboard("/test/job-dashboard", new DashboardOptions
+{
+    Authorization = new[]
+    {
+        new HangfireCustomBasicAuthenticationFilter
+        {
+            User = "admin",
+            Pass = "password123"
+        }
+    }
+});
+app.Use(async (context, next) => // Middleware 1
+{
+    Console.WriteLine($"Middleware 1 Request Received: {context.Request.Path}");
+    await next(); // Gọi middleware tiếp theo
+    Console.WriteLine($"Middleware 1 Response Sent: {context.Response.StatusCode}");
+});
+
+app.Use(async (context, next) => // Middleware 2
+{
+    Console.WriteLine($"Middleware 2 Request Received: {context.Request.Path}");
+    await next(); // Gọi middleware tiếp theo (nếu có)
+    Console.WriteLine($"Middleware 2 Response Sent: {context.Response.StatusCode}");
+});
+
 
 app.MapControllers();
 

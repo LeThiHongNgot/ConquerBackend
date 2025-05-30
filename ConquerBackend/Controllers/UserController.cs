@@ -1,20 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using ConquerBackend.Application.Common;
 using ConquerBackend.Application.Features.User.DTOs;
 using ConquerBackend.Application.Features.User.Interface;
-using System.Threading;
-using ConquerBackend.Domain.Entities.ConquerBackend;
-using System.Linq.Expressions;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-using ConquerBackend.Domain.Paging;
-using Microsoft.IdentityModel.Tokens;
-using MediatR;
 using ConquerBackend.Application.Features.User.Queries;
-using ConquerBackend.Application.Common;
-using Microsoft.AspNetCore.Components;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
+using ConquerBackend.Domain.Paging;
+using Hangfire;
+using Microsoft.AspNetCore.Mvc;
 
 namespace ConquerBackend.API.Controllers
 {
@@ -86,6 +76,52 @@ namespace ConquerBackend.API.Controllers
                 return NotFound();
 
             return NoContent();
+        }
+        [HttpGet("error")]
+        public IActionResult ThrowError()
+        {
+            throw new Exception("Lỗi test middleware!");
+        }
+
+        [HttpPost("BackgroundJob")]
+        public IActionResult CreateBackgroundJob()
+        {
+            BackgroundJob.Enqueue(() => Console.WriteLine("Background Job Trigger"));
+            return Ok();
+        }
+        [HttpPost("ScheduleJob")]
+        public IActionResult CreateScheduleJob()
+        {
+            var scheduleDateTime = DateTime.UtcNow.AddSeconds(10);
+            var dateTimeOffset = new DateTimeOffset(scheduleDateTime);
+            BackgroundJob.Schedule(() => Console.WriteLine("Schedule Job Triggered"), scheduleDateTime);
+            return Ok();
+        }
+        [HttpPost("ContinueJob")]
+        public IActionResult CreateContinueJob()
+        {
+            var scheduleDateTime = DateTime.UtcNow.AddSeconds(10);
+            var dateTimeOffset = new DateTimeOffset(scheduleDateTime);
+            var jobId = BackgroundJob.Schedule(() => Console.WriteLine("Schedule Job On Continue Triggered"), scheduleDateTime);
+            var job2Id = BackgroundJob.ContinueJobWith(jobId, () => Console.WriteLine("Continue 1 Job Triggered"));
+            var job3Id = BackgroundJob.ContinueJobWith(job2Id, () => Console.WriteLine("Continue 2 Job Triggered"));
+            return Ok();
+        }
+        //Cron.Minutely       // Mỗi phút
+        //Cron.Hourly         // Mỗi giờ
+        //Cron.Daily          // Mỗi ngày
+        //Cron.Weekly         // Mỗi tuần
+        //"*/5 * * * *"       // Mỗi 5 phút
+        //"0 8 * * 1-5"       // 8 giờ sáng từ thứ 2 đến thứ 6
+
+        [HttpPost("RecurringJob")]
+        public IActionResult CreateRecurringJob()
+        {
+            RecurringJob.AddOrUpdate(
+               recurringJobId: "RecurringJob1",
+               methodCall: () => Console.WriteLine($"[Recurring Job] Triggered at {DateTime.Now}"),
+               cronExpression: Cron.Minutely); // chạy mỗi phút
+            return Ok();
         }
     }
 }

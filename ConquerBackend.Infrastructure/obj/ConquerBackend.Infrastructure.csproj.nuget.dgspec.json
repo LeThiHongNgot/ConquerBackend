@@ -231,9 +231,17 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "Hangfire": {
+              "target": "Package",
+              "version": "[1.8.20, )"
+            },
             "MediatR": {
               "target": "Package",
               "version": "[12.4.1, )"
+            },
+            "Microsoft.Extensions.Caching.StackExchangeRedis": {
+              "target": "Package",
+              "version": "[9.0.5, )"
             },
             "Microsoft.Extensions.DependencyInjection": {
               "target": "Package",
