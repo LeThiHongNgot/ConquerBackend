@@ -2,43 +2,37 @@
 bin/
 obj/
 out/
-[Dd]ebug*/
-[Rr]elease*/
-x64/
-x86/
-
-## Rider
-.idea/
-
-## Visual Studio
-.vs/
-.vscode/
-*.user
-*.suo
-*.userosscache
-*.sln.docstates
 
 ## .NET Core
 project.lock.json
 project.fragment.lock.json
 artifacts/
 
-## ASP.NET
-wwwroot/*.min.js
-wwwroot/*.min.css
+## VS Code
+.vscode/
+
+## Visual Studio
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+## Rider
+.idea/
+
+## ASP.NET Core static files
 wwwroot/lib/
-node_modules/
+wwwroot/**/*.min.css
+wwwroot/**/*.min.js
 
-## Resharper
-_ReSharper*/
-*.[Rr]e[Ss]harper
-*.DotSettings.user
-
-## Files built by Visual Studio
-*.dbmdl
-*.bak
-*.backup
+## Logs
 *.log
+logs/
+log/
+
+## Entity Framework Migrations (tuỳ chọn, nếu bạn muốn version control thì đừng ignore)
+# Migrations/
 
 ## NuGet
 *.nupkg
@@ -48,32 +42,27 @@ packages/
 project.assets.json
 project.nuget.cache
 
-## Entity Framework
-Migrations/
-
 ## Auto-generated files
 *.g.cs
 *.g.i.cs
 *.AssemblyInfo.cs
 Generated_Code/
 
-## Logs
-*.log
-logs/
-log/
-*.tlog
-
-## Others
-TestResults/
-*.vspscc
-*.vssscc
-*.cache
-*.pdb
+## User-specific files
+*.swp
+*.bak
 *.tmp
 *.temp
-.vshost.
+*.dbmdl
+*.pdb
+
+## Test results
+TestResults/
+
+## Others
+*.vspscc
+*.vssscc
 *.DS_Store
 Thumbs.db
-
-# Ignore publish output
+.vshost.
 publish/
