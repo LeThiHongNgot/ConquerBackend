@@ -1,8 +1,8 @@
 ﻿using Newtonsoft.Json;
 
-namespace ConquerBackend.Shared.Convert
+namespace ConquerBackend.Shared.Converts
 {
-    public static  class Convert
+    public static  class Converts
     {
         public static string ToJsonString(this object obj, bool indented = false)
         {

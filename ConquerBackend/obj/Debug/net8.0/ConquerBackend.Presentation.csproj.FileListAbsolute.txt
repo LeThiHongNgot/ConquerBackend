@@ -508,3 +508,4 @@ C:\Users\ngotLe\Documents\Learn\ConquerBackend\ConquerBackend\bin\Debug\net8.0\Q
 C:\Users\ngotLe\Documents\Learn\ConquerBackend\ConquerBackend\bin\Debug\net8.0\Quartz.AspNetCore.dll
 C:\Users\ngotLe\Documents\Learn\ConquerBackend\ConquerBackend\bin\Debug\net8.0\Quartz.Extensions.DependencyInjection.dll
 C:\Users\ngotLe\Documents\Learn\ConquerBackend\ConquerBackend\bin\Debug\net8.0\Quartz.Extensions.Hosting.dll
+C:\Users\ngotLe\Documents\Learn\ConquerBackend\ConquerBackend\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll

@@ -4,6 +4,7 @@ using ConquerBackend.Application.Features.User.Interface;
 using ConquerBackend.Application.Features.User.Queries;
 using ConquerBackend.Domain.Paging;
 using Hangfire;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ConquerBackend.API.Controllers
@@ -12,6 +13,7 @@ namespace ConquerBackend.API.Controllers
     [ApiController]
     public class UserController(IUserService _userService, IGetUserQuery _getUserQuery, IDispatch _dispatch) : ControllerBase
     {
+        [Authorize(Roles = "Admin")]
         [HttpGet("MediatR")]
         public async Task<IActionResult> GetUserMediar(CancellationToken cancellationToken)
         {

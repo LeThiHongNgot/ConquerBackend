@@ -4,7 +4,7 @@ using ConquerBackend.Application.Features.User.Interface;
 using ConquerBackend.Domain.Constants;
 using ConquerBackend.Domain.Respositories.ConquerBackenQuery;
 using ConquerBackend.Infrastructure.Redis.Abtractions;
-using ConquerBackend.Shared.Convert;
+using ConquerBackend.Shared.Converts;
 using Microsoft.Extensions.Caching.Distributed;
 
 namespace ConquerBackend.Application.Features.User.Queries
